@@ -1,43 +1,81 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
 
 <head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Vehicle pooling system for Farmers</title>
+  <style>
+    body {
+      background-image: url('./img/wp1886330.jpg');
+      background-size: 100%;
+      /* background-attachment: fixed; */
+      /* height: 100vh; */
+      /* width: 100ch; */
+    }
+
+    a,
+    a:hover,
+    a:focus,
+    a:visited {
+      text-decoration: none;
+    }
+
+    #nav {
+      /* background-color: black; */
+      color: black;
+      text-align: center;
+      font-weight: bold;
+
+    }
+
+
+    button {
+      text-align: center;
+    }
+    .heading{
+      margin-top: 50px;
+    }
+    h1{
+      text-align: center;
+      margin-bottom: 40px;
+      background-color: black;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
-  <ul>
-    <% locations.forEach(function(location){ %>
-      <li>(<%=location.latitude%>,<%=location.longitude%>)</li>
-    <% }) %>
-  </ul>
+  <div class="heading">
 
-    <button type="submit" onclick="getLocation(this.name)" name="offer">Offer</button>
-    <button type="submit" onclick="getLocation(this.name)" name="request">RequestLocation</button>
+    <h1>वाहन साझाकरण प्रणाली</h1>
 
+    <div class="text-center">
+      <a class="btn btn-dark btn-lg" href="/offer_vehicle">
+          मेरा वाहन साझा करें</a>
+      <a  class="btn btn-dark btn-lg" href="/find_vehicle">वाहन खोजें</a>
 
-  <script type="text/javascript">
-    function getLocation(name) {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position){
-          var lat = position.coords.latitude;
-          var lon = position.coords.longitude;
-          const data = {lat,lon};
-          const option = {
-            method: "POST",
-            headers:{
-              'Content-Type':'application/json'
-            },
-            body: JSON.stringify(data)
-          };
-          fetch('/'+name,option)
-        });
-      } else {
-        console.log("no");
-      }
-    }
-  </script>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+  <div id="google_translate_element"></div>
+
+  <!-- <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'ru'}, 'google_translate_element');
+}
+</script> -->
+  <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
 </body>
 
 </html>
