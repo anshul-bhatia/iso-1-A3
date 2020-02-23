@@ -5,6 +5,12 @@ const geolib = require("geolib")
 const app = express()
 const ejs = require("ejs")
 
+const port = process.env.PORT;
+if(port==null || port="")
+  port=3000;
+
+
+
 //****************************mongoBD connections*************************
 mongoose.connect("mongodb+srv://admin-raghav:isohack-1@cluster0-zqtcb.mongodb.net/locationDB", {
   useNewUrlParser: true
@@ -19,7 +25,7 @@ app.use(express.json()) //to get coordinate working in JSON format
 app.set('view engine', 'ejs');
 
 
-app.listen(3000, function() {
+app.listen(port, function() {
   console.log("okee");
 })
 
