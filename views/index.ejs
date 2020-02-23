@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <ul>
+    <% locations.forEach(function(location){ %>
+      <li>(<%=location.latitude%>,<%=location.longitude%>)</li>
+    <% }) %>
+  </ul>
+
+    <button type="submit" onclick="getLocation(this.name)" name="offer">Offer</button>
+    <button type="submit" onclick="getLocation(this.name)" name="request">RequestLocation</button>
+
+
+  <script type="text/javascript">
+    function getLocation(name) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
+          var lat = position.coords.latitude;
+          var lon = position.coords.longitude;
+          const data = {lat,lon};
+          const option = {
+            method: "POST",
+            headers:{
+              'Content-Type':'application/json'
+            },
+            body: JSON.stringify(data)
+          };
+          fetch('/'+name,option)
+        });
+      } else {
+        console.log("no");
+      }
+    }
+  </script>
+</body>
+
+</html>
