@@ -5,7 +5,7 @@ const geolib = require("geolib")
 const app = express()
 const ejs = require("ejs")
 
-const port = process.env.PORT;
+const port = process.env.PORT|| 3000;
 // if(port==null || port="")
 // {  port=3000;
 // }
